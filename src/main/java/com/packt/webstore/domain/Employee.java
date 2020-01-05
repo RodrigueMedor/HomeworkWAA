@@ -1,0 +1,72 @@
+package com.packt.webstore.domain;
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+
+@Entity
+public class Employee implements Serializable {
+
+ 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "EMP_ID")
+ 	private long id;
+	
+	private String firstName;
+	private String lastName;
+ 
+	private int age;
+	private String title;
+ 
+	private int employeeNumber;
+
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
+
+	
+ 	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+ 	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public int getEmployeeNumber() {
+		return employeeNumber;
+	}
+	public void setEmployeeNumber(int employeeNumber) {
+		this.employeeNumber = employeeNumber;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+ 
+}
